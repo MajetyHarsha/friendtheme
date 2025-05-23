@@ -1,0 +1,34 @@
+{{!
+    @template theme_myfriend/drawers
+    Basic layout template for MyFriend theme.
+}}
+{{> theme_boost/head }}
+
+<body {{{ bodyattributes }}}>
+{{> core/local/toast/wrapper}}
+<div id="page-wrapper">
+
+    {{{ output.standard_top_of_body_html }}}
+    {{> core/navbar }} {{! Or theme_myfriend/navbar if you create one }}
+
+    <div id="page" class="drawers drag-container">
+        <div id="topofscroll" class="main-inner">
+            <div id="page-content" class="wrapper">
+                <div id="region-main-box">
+                    <section id="region-main" aria-label="{{#str}}content{{/str}}">
+                        {{{ output.main_content }}}
+                    </section>
+                </div>
+            </div>
+        </div>
+        {{> core/footer }} {{! Or theme_myfriend/footer if you create one }}
+    </div>
+</div>
+{{{ output.standard_end_of_body_html }}}
+</body>
+</html>
+{{#js}}
+    require(['theme_boost/loader', 'theme_boost/drawer'], function(Loader, Drawer) {
+      Drawer.init();
+    });
+{{/js}}
